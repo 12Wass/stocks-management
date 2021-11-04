@@ -1,0 +1,45 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Flux - Historique{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1 class="text-center title">Flux - Historique</h1>
+        <div class="row">
+            <div class="col-lg-12 ml-auto mr-auto">
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th>Utilisateur</th>
+                            <th>Date</th>
+                            <th>Code-barre</th>
+                            <th>Libellé</th>
+                            <th>Quantité</th>
+                            <th>Flux</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for flux in fluxes %}
+                            <tr>
+                                <td>{{ flux.id }}</td>
+                                <td>{{ flux.user.username }}</td>
+                                <td>{{ flux.datetime|format_datetime() }}</td>
+                                <td>{{ flux.barcode }}</td>
+                                <td>{{ flux.name }}</td>
+                                <td>{{ flux.quantity }}</td>
+                                <td>{{ flux.type }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="10">Aucun Flux répertorié en base de données.</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

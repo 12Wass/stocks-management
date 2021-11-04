@@ -1,0 +1,29 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}STOCKS MANAGEMENT{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="content">
+    <h1 class="text-center">Bienvenue dans le logiciel de stockage {{ enterprise }}</h1>
+    <div class="row">
+        <div class="col-lg-8 ml-auto mr-auto">
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-primary btn-block" onclick="location.href='{{ path('user_index') }}'">Utilisateurs</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary btn-block" onclick="location.href='{{ path('product_index') }}'">Produits</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary btn-block" onclick="location.href='{{ path('data_management') }}'">Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

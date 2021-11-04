@@ -1,0 +1,30 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-3">
+        {{ form_row(form.name) }}
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.barcode) }}
+    </div>
+    <div class="col-md-3" id="generated_barcode">
+        <p>Code-barre</p>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="btn" onclick="generateBarcode()">Générer</button>
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.provider) }}
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.stock) }}
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.min_alert) }}
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.max_alert) }}
+    </div>
+</div>
+
+    <button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}

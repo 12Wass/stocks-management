@@ -1,0 +1,29 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-4">
+        {{ form_row(form.barcode) }}
+    </div>
+        {{ form_row(form.id) }}
+    <div class="col-md-4">
+        <label for="es_quantity">Quantité</label>
+        <input type="number" id="es_quantity" name="es[quantity]" required="required" class="form-control" min="0">
+    </div>
+    <div id="searchResults"></div>
+    <div class="col-md-12">
+        <div class="form-check form-check-radio form-check-inline" id="es_flow_type">
+            <label class="form-check-label" for="es_flow_type_entry">
+                <input class="form-check-input" type="radio" name="es[flow_type]" id="es_flow_type_entry" value="entry"> Entrée
+                <span class="form-check-sign"></span>
+            </label>
+        </div>
+        <div class="form-check form-check-radio form-check-inline">
+            <label class="form-check-label" for="es_flow_type_exit">
+                <input class="form-check-input" type="radio" name="es[flow_type]" id="es_flow_type_exit" value="exit"> Sortie
+                <span class="form-check-sign"></span>
+            </label>
+        </div>
+    </div>
+</div>
+
+    <button class="btn" id="es_button_send" disabled>{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}

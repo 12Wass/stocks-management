@@ -1,0 +1,42 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Générer des étiquettes{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="col-md-6">
+                <label for="product_select">Libellé</label>
+                <select class="form-control" name="product_select" id="product_select">
+                    {% for product in products %}
+                        <option value="{{ product.id }}">{{ product.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="quantity">Quantité</label>
+                <input type="number" class="form-control" placeholder="Quantité" name="quantity" id="quantity" min="0">
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn" onclick="addToTable()">Ajouter</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn" onclick="generateLabels()">Générer</button>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <table class="table" id="productsTable">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Quantité</th>
+                </tr>
+                </thead>
+                <tbody id="productsTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Modifier un fournisseur{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 class="text-center title">Gestion des fournisseurs</h1>
+    <div class="row">
+        <div class="col-lg-12 ml-auto mr-auto">
+                <h1>Modification d'un fournisseur</h1>
+
+                {{ include('provider/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+                <div class="col-md-3">
+                    {{ include('provider/_delete_form.html.twig') }}
+                </div>
+                <div class="col-md-12">
+                        <a href="{{ path('provider_index') }}">back to list</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

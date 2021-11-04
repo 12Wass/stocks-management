@@ -1,0 +1,43 @@
+<?php //%255B3e817aaab06f5b4db1244d0001189fbc%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\ParserResult' => [
+            '_sqlExecutor' => [
+                $o[1],
+            ],
+            '_resultSetMapping' => [
+                $o[2],
+            ],
+        ],
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            '_sqlStatements' => [
+                1 => 'SELECT u0_.id AS id_0, u0_.username AS username_1, u0_.roles AS roles_2 FROM `user` u0_',
+            ],
+        ],
+        'stdClass' => [
+            'scalarMappings' => [
+                2 => [
+                    'id_0' => 'id',
+                    'username_1' => 'username',
+                    'roles_2' => 'roles',
+                ],
+            ],
+            'typeMappings' => [
+                2 => [
+                    'id_0' => 'integer',
+                    'username_1' => 'string',
+                    'roles_2' => 'json',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

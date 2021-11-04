@@ -1,0 +1,54 @@
+<div class="sidebar" data-color="">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="javascript:void(0)" class="simple-text logo-mini">
+                STCK
+            </a>
+            <a href="javascript:void(0)" class="simple-text logo-normal">
+                MENU
+            </a>
+        </div>
+        <ul class="nav">
+            <li>
+                <a href="{{ path('home') }}">
+                    <i class="tim-icons icon-chart-pie-36"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+
+            {% if is_granted('ROLE_ADMIN') %}
+            <li>
+                <a href="{{ path('product_es') }}">
+                    <i class="tim-icons icon-atom"></i>
+                    <p>Entrées / Sorties de matériel</p>
+                </a>
+            </li>
+            {% endif %}
+
+            <li>
+                <a href="{{ path('data_management') }}">
+                    <i class="tim-icons icon-single-02"></i>
+                    <p>Gestion des données</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('product_index') }}">
+                    <i class="tim-icons icon-puzzle-10"></i>
+                    <p>Stock</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('flux') }}">
+                    <i class="tim-icons icon-align-center"></i>
+                    <p>Flux</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('label_index') }}">
+                    <i class="tim-icons icon-scissors"></i>
+                    <p>Etiquettes</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

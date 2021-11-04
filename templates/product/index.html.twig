@@ -1,0 +1,78 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Gestion des produits{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1 class="text-center title">Gestion des produits</h1>
+        <div class="row">
+            <div class="col-lg-12 ml-auto mr-auto">
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th>Nom</th>
+                            <th>Code barre</th>
+                            <th>EAN13</th>
+                            <th>Fournisseur</th>
+                            <th>Stock</th>
+                            <th>Entrées</th>
+                            <th>Sorties</th>
+                            <th>Alerte</th>
+                            <th>Min. Alerts</th>
+                            <th>Max. Alerts</th>
+                            {% if  actions != false %}
+                            <th class="text-center">Actions</th>
+                            {% endif %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in products %}
+                        <tr>
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.barcode }}</td>
+                            <td><img src="data:image/png;base64,{{ product.ean13 }}" /></td>
+                            <td>{{ product.provider.name }}</td>
+                            <td>{{ product.stock }}</td>
+                            <td>{{ product.entries }}</td>
+                            <td>{{ product.exits }}</td>
+                            {% if product.stock < product.minAlert %}
+                            <td class="alert-warning text-center">PAS ASSEZ DE STOCK</td>
+                                {% elseif product.stock > product.maxAlert %}
+                            <td class="alert-danger text-center">TROP DE STOCK</td>
+                                {% else %}
+                            <td class="alert-success text-center">BON</td>
+                                {% endif %}
+                            <td>{{ product.minAlert }}</td>
+                            <td>{{ product.maxAlert }}</td>
+                            {% if actions != false %}
+                            <td class="td-actions text-center">
+                                <button type="button" onclick="location.href='{{ path('product_show', {'id': product.id}) }}'" rel="tooltip" class="btn btn-info btn-sm btn-round btn-icon">
+                                    <i class="tim-icons icon-zoom-split"></i>
+                                </button>
+                                <button type="button" onclick="location.href='{{ path('product_edit', {'id': product.id}) }}'" rel="tooltip" class="btn btn-success btn-sm btn-round btn-icon">
+                                    <i class="tim-icons icon-settings"></i>
+                                </button>
+                                <button type="button" onclick="location.href='{{ path('product_delete', {'id': product.id}) }}'" rel="tooltip" class="btn btn-danger btn-sm btn-round btn-icon">
+                                    <i class="tim-icons icon-simple-remove"></i>
+                                </button>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="10">Aucun produit répertorié en base de données.</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <a href="{{ path('product_new') }}">Ajouter un produit</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

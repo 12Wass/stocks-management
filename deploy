@@ -1,0 +1,2 @@
+#!/bin/sh
+rsync -av ./ user@host:~/file --include=public/build --include=public/.htaccess --include=vendor --exclude-from=.gitignore --exclude=".*"

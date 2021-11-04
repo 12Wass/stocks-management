@@ -1,0 +1,52 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1 class="text-center">Gestion des utilisateurs</h1>
+            <div class="row">
+                <div class="col-lg-8 ml-auto mr-auto">
+                    <div class="row">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Username</th>
+                                    <th>Roles</th>
+                                    {% if actions != false %}
+                                    <th class="text-center">Actions</th>
+                                    {% endif %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for user in users %}
+                                <tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                                    {% if actions != false %}
+                                    <td class="td-actions text-center">
+                                        <button type="button" onclick="location.href='{{ path('user_edit', {'id': user.id}) }}'" rel="tooltip" class="btn btn-success btn-sm btn-round btn-icon">
+                                            <i class="tim-icons icon-settings"></i>
+                                        </button>
+                                        <button type="button" onclick="location.href='{{ path('user_delete', {'id': user.id}) }}'" rel="tooltip" class="btn btn-danger btn-sm btn-round btn-icon">
+                                            <i class="tim-icons icon-simple-remove"></i>
+                                        </button>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">Aucun utilisateur répertorié en base de données.</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <a href="{{ path('app_register', {'user_management': true}) }}">Ajouter un utilisateur</a>
+                    </div>
+                </div>
+        </div>
+    </div>
+{% endblock %}

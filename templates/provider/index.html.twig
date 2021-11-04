@@ -1,0 +1,49 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Gestion des fournisseurs{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 class="text-center title">Gestion des fournisseurs</h1>
+    <div class="row">
+        <div class="col-lg-12 ml-auto mr-auto">
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom</th>
+                            <th>Date de création</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for provider in providers %}
+                        <tr>
+                            <td>{{ provider.id }}</td>
+                            <td>{{ provider.name }}</td>
+                            <td>{{ provider.datetime ? provider.datetime|date('d/m/Y H:i:s') : '' }}</td>
+                            <td class="td-actions text-center">
+                                <button type="button" onclick="location.href='{{ path('provider_edit', {'id': provider.id}) }}'" rel="tooltip" class="btn btn-success btn-sm btn-round btn-icon">
+                                    <i class="tim-icons icon-settings"></i>
+                                </button>
+                                <button type="button" onclick="location.href='{{ path('provider_delete', {'id': provider.id}) }}'" rel="tooltip" class="btn btn-danger btn-sm btn-round btn-icon">
+                                    <i class="tim-icons icon-simple-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Pas de fournisseurs trouvés</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ path('provider_new') }}">Ajouter un nouveau fournisseur</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
